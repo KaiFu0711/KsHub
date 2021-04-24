@@ -5,6 +5,7 @@ local label = Instance.new("TextLabel")
 local injectfe = Instance.new("TextButton")
 local TextLabel = Instance.new("TextLabel")
 local gamelauncher = Instance.new("TextButton")
+local close = Instance.new("TextButton")
 local games = Instance.new("Frame")
 local gamelabel = Instance.new("TextLabel")
 local sabersim = Instance.new("TextButton")
@@ -12,6 +13,8 @@ local sbrsim = Instance.new("Frame")
 local sbrslbl = Instance.new("TextLabel")
 local sbrsl = Instance.new("TextButton")
 local sbrinfo = Instance.new("TextBox")
+local mainclosed = Instance.new("Frame")
+local openmain = Instance.new("TextButton")
 
 --Properties:
 
@@ -50,7 +53,7 @@ injectfe.Text = "Inject FE"
 injectfe.TextColor3 = Color3.fromRGB(0, 0, 0)
 injectfe.TextSize = 14.000
 gamelauncher.MouseButton1Down:connect(function()
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/KaiFu0711/KsHub/main/KsFE.lua'))()
 end)
 
 
@@ -74,6 +77,22 @@ gamelauncher.TextColor3 = Color3.fromRGB(0, 0, 0)
 gamelauncher.TextSize = 14.000
 gamelauncher.MouseButton1Down:connect(function()
 	games.Visible = true
+end)
+
+close.Name = "close"
+close.Parent = main
+close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+close.Position = UDim2.new(0.919037223, 0, 0, 0)
+close.Size = UDim2.new(0, 36, 0, 35)
+close.Font = Enum.Font.SourceSans
+close.Text = "X"
+close.TextColor3 = Color3.fromRGB(0, 0, 0)
+close.TextScaled = true
+close.TextSize = 14.000
+close.TextWrapped = true
+close.MouseButton1Down:connect(function()
+	main.Visible = false
+	mainclosed.Visible = true
 end)
 
 games.Name = "games"
@@ -106,6 +125,8 @@ sabersim.TextSize = 20.000
 sabersim.MouseButton1Down:connect(function()
 	sbrsim.Visible = true
 	games.Visible = false
+	main.Visible = false
+	mainclosed.Visible = true
 end)
 
 sbrsim.Name = "sbrsim"
@@ -151,3 +172,26 @@ sbrinfo.TextSize = 20.000
 sbrinfo.TextWrapped = true
 sbrinfo.TextXAlignment = Enum.TextXAlignment.Left
 sbrinfo.TextYAlignment = Enum.TextYAlignment.Top
+
+mainclosed.Name = "mainclosed"
+mainclosed.Parent = supermain
+mainclosed.BackgroundColor3 = Color3.fromRGB(40, 39, 39)
+mainclosed.Position = UDim2.new(12.1122446, 0, 8.30848598, 0)
+mainclosed.Size = UDim2.new(0, 72, 0, 34)
+mainclosed.Draggable = true
+mainclosed.Active = true
+mainclosed.Visible = false
+
+openmain.Name = "openmain"
+openmain.Parent = mainclosed
+openmain.BackgroundColor3 = Color3.fromRGB(66, 64, 64)
+openmain.Position = UDim2.new(0.435294271, 0, 0, 0)
+openmain.Size = UDim2.new(0, 40, 0, 34)
+openmain.Font = Enum.Font.SourceSans
+openmain.Text = "Open"
+openmain.TextColor3 = Color3.fromRGB(0, 0, 0)
+openmain.TextSize = 14.000
+openmain.MouseButton1Down:connect(function()
+	main.Visible = true
+	mainclosed.Visible = false
+end)
